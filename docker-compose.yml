@@ -12,7 +12,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: kong-docker-demo
+    image: kong-docker-thirdlaw-demo
     user: kong
     depends_on:
       - db

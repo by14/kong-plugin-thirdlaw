@@ -1,9 +1,7 @@
-local BasePlugin = require "kong.plugins.base_plugin"
-local ThirdlawHandler = BasePlugin:extend()
-
-function ThirdlawHandler:new()
-    ThirdlawHandler.super.new(self, "thirdlaw")
-end
+local ThirdlawHandler = {
+    VERSION  = "1.0",
+    PRIORITY = 1000, -- set the priority, lower means higher priority
+}
 
 function ThirdlawHandler:access(conf)
     ThirdlawHandler.super.access(self)

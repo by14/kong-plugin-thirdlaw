@@ -20,6 +20,21 @@ echo "Rebuilding the containers without using the cache..."
 docker-compose build --no-cache
 
 echo "Starting the containers in detached mode..."
-docker-compose -f docker-compose.yml up -d
+docker-compose up -d
+
+# Wait for the Kong container to be healthy
+echo "Waiting for the Kong container to be healthy..."
+until [ "$(docker inspect -f {{.State.Health.Status}} $(docker-compose ps -q kong))" == "healthy" ]; do
+    sleep 1;
+    echo "Waiting for Kong to be healthy..."
+done
+
+# Replace 'notice' with 'debug' in nginx-kong.conf
+echo "Modifying nginx-kong.conf in the Kong container..."
+container_id=$(docker-compose ps -q kong)
+docker exec $container_id sed -i 's/notice/debug/g' /usr/local/kong/nginx-kong.conf
+
+# Optionally, you might need to reload or restart Kong to apply the changes
+docker exec $container_id kong reload
 
 echo "Done."

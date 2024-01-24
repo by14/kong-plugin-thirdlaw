@@ -4,8 +4,6 @@ local ThirdlawHandler = {
 }
 
 function ThirdlawHandler:access(conf)
-    ThirdlawHandler.super.access(self)
-
     local request_path = kong.request.get_path()
     local request_host = kong.request.get_host()
 

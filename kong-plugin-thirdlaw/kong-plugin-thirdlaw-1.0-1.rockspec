@@ -1,7 +1,7 @@
 package = "kong-plugin-thirdlaw"
 version = "1.0-1"
 source = {
-    url = "file://."
+    url = "git://github.com/by14/kong-plugin-thirdlaw.git"
 }
 description = {
     summary = "A Kong plugin to redirect requests based on specific conditions.",
@@ -15,7 +15,7 @@ dependencies = {
 build = {
     type = "builtin",
     modules = {
-        ["kong.plugins.thirdlaw.handler"] = "path/to/handler.lua",
-        ["kong.plugins.thirdlaw.schema"] = "path/to/schema.lua"
+        ["kong.plugins.thirdlaw.handler"] = "kong/plugins/thirdlaw/handler.lua",
+        ["kong.plugins.thirdlaw.schema"] = "kong/plugins/thirdlaw/schema.lua"
     }
 }

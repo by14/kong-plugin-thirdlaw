@@ -14,7 +14,7 @@ dependencies = {
 build = {
     type = "builtin",
     modules = {
-        ["kong.plugins.thirdlaw.handler"] = "kong/plugins/thirdlaw/handler.lua",
-        ["kong.plugins.thirdlaw.schema"] = "kong/plugins/thirdlaw/schema.lua"
+        ["kong.plugins.thirdlaw.handler"] = "./kong-plugin-thirdlaw/handler.lua",
+        ["kong.plugins.thirdlaw.schema"] = "./kong-plugin-thirdlaw/schema.lua",
     }
 }

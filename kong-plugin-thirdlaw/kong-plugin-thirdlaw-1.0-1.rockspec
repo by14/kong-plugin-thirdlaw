@@ -10,7 +10,6 @@ description = {
 }
 dependencies = {
     "lua >= 5.1",
-    -- Add other dependencies here
 }
 build = {
     type = "builtin",

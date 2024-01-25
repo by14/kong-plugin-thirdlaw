@@ -32,7 +32,8 @@ done
 # Replace 'notice' with 'debug' in nginx-kong.conf
 echo "Modifying nginx-kong.conf in the Kong container..."
 container_id=$(docker-compose ps -q kong)
-docker exec $container_id sed -i 's/notice/debug/g' /usr/local/kong/nginx-kong.conf
+echo "Container ID: $container_id"
+docker exec --user root $container_id sed -i 's/notice/debug/g' /usr/local/kong/nginx-kong.conf
 
 # Optionally, you might need to reload or restart Kong to apply the changes
 docker exec $container_id kong reload
